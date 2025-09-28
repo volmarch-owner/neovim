@@ -102,7 +102,7 @@ require("lazy").setup({
 				},
 			},
 			view = {
-				width = 30,
+				width = 10,
 				side = "left",
 				adaptive_size = true,
 			},
@@ -199,4 +199,46 @@ require("lazy").setup({
 			vim.lsp.enable({ "rust-analyzer" })
 		end,
 	},
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = true,
+	},
+	{
+		"sphamba/smear-cursor.nvim",
+	},
 })
+require("toggleterm").setup({
+	size = 20,
+	start_in_insert = true,
+	open_mapping = [[<A-p>]],
+	shell = "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+	direction = "float",
+	hide_numbers = true,
+	shade_filtypes = {},
+	shading_factor = 2,
+	persist_size = true,
+	insert_mappings = true,
+	terminal_mappings = true,
+	close_on_exit = true,
+	winbar = "Terminal",
+})
+require("smear_cursor").setup({
+	cursor_color = "#800000",
+	stiffness = 0.3,
+	trailing_stiffness = 0.1,
+	trailing_exponent = 5,
+	gamma = 1,
+})
+vim.keymap.set("n", "<C-y>", "dd", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-y>", "<Esc>dda", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-d>", "yyp", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-d>", "<Esc>yypa", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-S>", ":wq<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-S>", "<Esc>:wq<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-s>", "<Esc>:w<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "<C-S>", "<Esc>:wq<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<C-q>", ":q!<CR>", { noremap = true, silent = true })
+vim.keymap.set("i", "<C-q>", "<Esc>:q!<CR>", { noremap = true, silent = true })
